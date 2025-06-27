@@ -41,6 +41,8 @@ if(show == null) show = "";
 			out.print("<p>"+updateCnt+"행이 추가되었습니다.</p>");
 		else
 			out.print("<p>업데이트 실패: 아이디가 중복인지 확인하세요.</p>");
+	} else if(updated.compareTo("E") == 0) {
+		out.print("업데이트 실패: 빈값을 입력");
 	}
 	%>
 	</div>

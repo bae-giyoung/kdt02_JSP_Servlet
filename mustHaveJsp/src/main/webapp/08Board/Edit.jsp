@@ -1,6 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="model1.board.BoardDAO" %>
+<%@ page import="model1.board.BoardDTO" %>
 <%@ include file="./IsLoggedIn.jsp" %>
+<%
+String num = request.getParameter("num");	// 일련번호 받기
+BoardDAO dao = new BoardDAO(application);	// DAO 생성
+BoardDTO dto = dao.selectView(num); 		// 게시물 가져오기
+
+String sessionId = session.getAttribute("UserId").toString(); // 로그인 아이디 얻기
+if(!sessionId.equals(dto.getId())) {	// 본인이 아니면
+	JSFunction.alertBack("작성자 본인만 수정할 수 있습니다.", out);
+	return;
+}
+
+dao.close();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,19 +38,20 @@ fucntion validateForm(form) { // 폼 내용 검증
 </head>
 <body>
 <jsp:include page="../Common/Link.jsp" />
-<h2>회원제 게시판 - 글쓰기</h2>
-<form name="writeFrm" method="post" action="WriteProcess.jsp" onsubmit="return validateForm(this);">
+<h2>회원제 게시판 - 수정하기(Edit)</h2>
+<form name="writeFrm" method="post" action="EditProcess.jsp" onsubmit="return validateForm(this);">
+	<input type="hidden" name="num" value="<%= dto.getNum() %>" />
 	<table border="1" width="90%">
 		<tr>
 			<td>제목</td>
 			<td>
-				<input type="text" name="title" style="width: 90%;" />
+				<input type="text" name="title" style="width:90%;" value="<%= dto.getTitle() %>" />
 			</td>
 		</tr>
 		<tr>
 			<td>내용</td>
 			<td>
-				<input type="text" name="content" style="width: 90%;" />
+				<input type="text" name="content" style="width:90%; height:100px;" value="<%= dto.getContent() %>" />
 			</td>
 		</tr>
 		<tr>

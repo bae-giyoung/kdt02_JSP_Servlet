@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>회원제 게시판</title>
 <script type="text/javascript">
-fucntion validateForm(form) { // 폼 내용 검증
+function validateForm(form) { // 폼 내용 검증
 	if(form.title.value == "") {
 		alert("제목을 입력하세요.");
 		form.title.focus();
@@ -35,7 +35,7 @@ fucntion validateForm(form) { // 폼 내용 검증
 		<tr>
 			<td>내용</td>
 			<td>
-				<input type="text" name="content" style="width: 90%;" />
+				<input type="text" name="content" style="width: 90%; height: 100px;" />
 			</td>
 		</tr>
 		<tr>

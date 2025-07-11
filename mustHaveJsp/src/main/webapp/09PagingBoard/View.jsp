@@ -5,6 +5,7 @@
 <%
 String num = request.getParameter("num");	// 일련번호 받기
 String pageNum = request.getParameter("pageNum");
+if(pageNum == null) pageNum = "";
 
 BoardDAO dao = new BoardDAO(application);	// DAO 생성
 dao.updateVisitCount(num);					// 조회수 증가

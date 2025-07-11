@@ -35,7 +35,7 @@ if(pageTemp != null && !pageTemp.equals(""))
 	pageNum = Integer.parseInt(pageTemp); // 요청받은 페이지로 수정
 	
 // 목록에 출력할 게시물 범위 계산
-int start = (pageNum - 1) * pageSize; // 첫 게시물 번호 -> mySql은 0부터 시작 (pageNum - 1) * pageSize + 1 - 1
+int start = (pageNum - 1) * pageSize; // 첫 게시물 번호 -> mySql은 0부터 시작 (pageNum - 1) * pageSize + 1 =====> (pageNum - 1) * pageSize
 param.put("start", start);
 param.put("pageSize", pageSize);
 /*** 페이지 처리 end ***/

@@ -43,7 +43,6 @@ public class MemberDAO extends JDBConnect {
 				try {
 					if(rs != null) rs.close(); 
 					if(psmt != null) psmt.close();
-					if(con != null) con.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}

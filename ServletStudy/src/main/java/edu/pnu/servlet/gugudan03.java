@@ -32,7 +32,8 @@ public class gugudan03 extends HttpServlet {
 				out.println("<li>" +i+" * "+j+" =\t"+(i*j)+"</li>");
 			}
 			out.println("</ul>");
-			out.print(gubunTag.repeat(dan%i));
+			if((i-1) % dan == 0)
+				out.print(gubunTag);
 		}
 	}
 }

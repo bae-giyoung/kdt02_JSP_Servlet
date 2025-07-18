@@ -17,10 +17,10 @@
 			<tr>
 				<td align="center">
 					<select name="searchField">
-						<option value="title">제목</option>
-						<option value="content">내용</option>
+						<option value="title" <c:if test="${ param.searchField == 'title' }">selected</c:if>>제목</option>
+						<option value="content" <c:if test="${ param.searchField == 'content' }">selected</c:if>>내용</option>
 					</select>
-					<input type="text" name="searchWord" />
+					<input type="text" name="searchWord" value="${ param.searchWord }" />
 					<input type="submit" value="검색하기" />
 				</td>
 			</tr>
@@ -61,7 +61,7 @@
 					${ map.totalCount - (((map.pageNum - 1)*map.pageSize) + loop.index) }
 				</td>
 				<td align="left"><!-- 제목(링크) -->
-					<a href="../mvcboard/view.do?idx=${ row.getIdx() }">${ row.getTitle() }</a>
+					<a href="../mvcboard/view.do?idx=${ row.getIdx() }&pageNum=${map.pageNum}">${ row.getTitle() }</a>
 				</td>
 				<td align="left"><!-- 작성자 -->
 					${ row.getName() }

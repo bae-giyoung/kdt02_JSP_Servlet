@@ -79,7 +79,7 @@ public class FileUtil {
 			
 			// 한글 파일명 깨짐 방지
 			String client = req.getHeader("User-Agent");
-			if(client.indexOf("WOW64") == 1) {
+			if(client.indexOf("WOW64") == -1) {
 				ofileName = new String(ofileName.getBytes("UTF-8"), "ISO-8859-1");
 			} else {
 				ofileName = new String(ofileName.getBytes("KSC5601"), "ISO-8859-1");				
